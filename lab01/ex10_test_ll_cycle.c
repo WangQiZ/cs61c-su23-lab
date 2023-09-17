@@ -41,6 +41,7 @@ int main(void) {
 
     nodes[18].next = &nodes[18];
     printf("Checking fourth list for cycles. There should be a cycle, ll_has_cycle says it has %s cycle\n", ll_has_cycle(&nodes[18]) ? "a" : "no");
+
     assert(ll_has_cycle(&nodes[18]));
 
     nodes[19].next = &nodes[20];
