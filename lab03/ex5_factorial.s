@@ -1,7 +1,7 @@
 .globl factorial
 
 .data
-n: .word 8
+n: .word 9
 
 .text
 # Don't worry about understanding the code in main
@@ -27,7 +27,20 @@ main:
 # The return value should be stored in a0
 factorial:
     # YOUR CODE HERE
-
+    add t0 x0 x0
+    mv t0 a0 #t0 = n
+    addi t1 x0 1#t1 = 1
+    beq t0 x0 fzero#n = 0, a0 = 1 ret
+    beq t0 t1 fzero
+    fac:
+    sub a0 a0 t1 #n-1
+    mul t0 t0 a0
+    bne a0 t1 fac
+    mv a0 t0
+    j fret
+    fzero:
+    mv a0 t1
     # This is how you return from a function. You'll learn more about this later.
     # This should be the last line in your program.
+    fret:
     jr ra
